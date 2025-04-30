@@ -14,13 +14,12 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.KEYDOWN and event.__dict__.get('key') == pygame.K_ESCAPE:
+            running = False
+            print(event.__dict__)
 
-    # fill the screen with a color to wipe away anything from last frame
     screen.fill("purple")
 
-    # RENDER YOUR GAME HERE
-
-    # flip() the display to put your work on screen
     pygame.display.flip()
 
     clock.tick(60)  # limits FPS to 60
