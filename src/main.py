@@ -1,4 +1,6 @@
 import pygame
+import os
+from ball import Ball
 
 # pygame setup
 pygame.init()
@@ -7,6 +9,10 @@ clock = pygame.time.Clock()
 running = True
 
 pygame.mouse.set_cursor(pygame.cursors.diamond)
+
+print(os.getcwd())
+ball_a = Ball((1,0))
+
 
 while running:
     # poll for events
@@ -19,6 +25,8 @@ while running:
             print(event.__dict__)
 
     screen.fill("purple")
+    screen.blit(ball_a.image, ball_a.rect)
+    ball_a.update()
 
     pygame.display.flip()
 

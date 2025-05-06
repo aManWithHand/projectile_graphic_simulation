@@ -1,12 +1,12 @@
 from pygame.sprite import Sprite
 from pygame.math import Vector2
 import pygame
-import utility as util
+from utility import Utillity as util
 
 class ThrowableObject(Sprite):
 
     """A base class for moving object by initial speed
-    Returns: -
+    Returns: self
     Functions: update
     Attributes: speed, image, rect, area"""
 
@@ -20,5 +20,5 @@ class ThrowableObject(Sprite):
     def update(self, *args, **kwargs):
         self._move()
 
-    def _move() -> None:
-        pass
+    def _move(self) -> None:
+        self.rect = self.rect.move(self.speed)

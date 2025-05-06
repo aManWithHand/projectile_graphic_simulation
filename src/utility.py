@@ -6,6 +6,7 @@ class Utillity:
     @staticmethod
     def load_png(name: str) -> pygame.Surface | pygame.Rect:
         fullname = os.path.join("pic", name)
+        fullname = os.path.join(os.getcwd(),fullname)
         try:
             image = pygame.image.load(fullname)
             if image.get_alpha() is None:
