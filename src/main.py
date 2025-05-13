@@ -6,12 +6,14 @@ from ball import Ball
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
+delta = 0
 running = True
 
+#next show time as a text since start the game
 pygame.mouse.set_cursor(pygame.cursors.diamond)
 
 print(os.getcwd())
-ball_a = Ball((1,0))
+ball_a = Ball((100,0))
 
 
 while running:
@@ -26,10 +28,10 @@ while running:
 
     screen.fill("purple")
     screen.blit(ball_a.image, ball_a.rect)
-    ball_a.update()
+    ball_a.update(delta = delta)
 
     pygame.display.flip()
 
-    clock.tick(60)  # limits FPS to 60
+    delta = clock.tick_busy_loop(60)/1000  # limits FPS to 60
 
 pygame.quit()

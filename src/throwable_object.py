@@ -18,7 +18,7 @@ class ThrowableObject(Sprite):
         self.area = screen.get_rect()
 
     def update(self, *args, **kwargs):
-        self._move()
+        self._move(kwargs["delta"])
 
-    def _move(self) -> None:
-        self.rect = self.rect.move(self.speed)
+    def _move(self, delta) -> None:
+        self.rect = self.rect.move(self.speed * delta)
