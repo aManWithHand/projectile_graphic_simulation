@@ -35,6 +35,6 @@ while is_running:
 
     delta = clock.tick_busy_loop(60)/1000  # limits FPS to 60
     running_time += delta
-    print(f'{running_time} s',)
+    print(f'{running_time} s')
 
 pygame.quit()
