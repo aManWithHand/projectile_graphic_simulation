@@ -15,7 +15,7 @@ is_running = True
 pygame.mouse.set_cursor(pygame.cursors.diamond)
 
 print(os.getcwd())
-ball_a = Ball(position = (100,20),
+ball_a = Ball(position = (100,100),
               speed = (100,-100))
 
 
@@ -31,7 +31,7 @@ while is_running:
 
     screen.fill("purple")
     screen.blit(ball_a.image, ball_a.rect)
-    ball_a.update(delta = delta)
+    ball_a.update(delta = running_time)
 
     pygame.display.flip()
 
