@@ -10,7 +10,12 @@ class ThrowableObject(Sprite):
     Functions: update
     Attributes: speed, image, rect, area"""
 
-    def __init__(self, image: str, position:tuple = (0,0), gravity:tuple = (0,100), speed: tuple = (0,0), *groups):
+    def __init__(self,
+                 image: str, 
+                 position: tuple = (0,0),
+                 speed: tuple = (0,0),
+                 gravity: tuple = (0,100),
+                 *groups):
         super().__init__(*groups)
         self.speed = Vector2(speed)
         self.image, self.rect = util.load_png(image)

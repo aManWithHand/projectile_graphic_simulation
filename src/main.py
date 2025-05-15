@@ -16,7 +16,8 @@ pygame.mouse.set_cursor(pygame.cursors.diamond)
 
 print(os.getcwd())
 ball_a = Ball(position = (100,100),
-              speed = (100,-100))
+              speed = (100,-100),
+              gravity = (0,50))
 
 
 while is_running:
