@@ -8,13 +8,15 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 delta = 0
 running_time = 0
+gravity = -10
 is_running = True
 
 #next show time as a text since start the game
 pygame.mouse.set_cursor(pygame.cursors.diamond)
 
 print(os.getcwd())
-ball_a = Ball((100,0))
+ball_a = Ball(position = (100,20),
+              speed = (100,-100))
 
 
 while is_running:
