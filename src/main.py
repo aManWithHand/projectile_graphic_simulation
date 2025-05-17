@@ -3,6 +3,7 @@ import os
 from ball import Ball
 
 
+
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
@@ -30,9 +31,15 @@ while is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             is_running = False
-        elif event.type == pygame.KEYDOWN and event.__dict__.get('key') == pygame.K_ESCAPE:
-            is_running = False
-            print(event.__dict__)
+
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                is_running = False
+                print(event.__dict__)
+            
+            if event.key == pygame.K_SPACE:
+                running_time = 0
+                
 
     screen.fill("purple")
     screen.blit(ball_a.image, ball_a.rect)
@@ -48,3 +55,6 @@ while is_running:
     
 
 pygame.quit()
+
+
+
