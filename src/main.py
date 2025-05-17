@@ -2,7 +2,7 @@ import pygame
 import os
 from ball import Ball
 
-# pygame setup
+
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
@@ -16,13 +16,17 @@ pygame.mouse.set_cursor(pygame.cursors.diamond)
 
 print(os.getcwd())
 ball_a = Ball(position = (100,100),
-              speed = (100,-100),
-              gravity = (0,50))
+              speed = (0,0),
+              gravity = (0,5))
+
+ball_b = Ball(position = (300,100),
+              speed = (5,-5),
+              gravity = (0,5))
 
 
 while is_running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
+    
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             is_running = False
@@ -32,12 +36,15 @@ while is_running:
 
     screen.fill("purple")
     screen.blit(ball_a.image, ball_a.rect)
+    screen.blit(ball_b.image, ball_b.rect)
     ball_a.update(delta = running_time)
+    ball_b.update(delta = running_time)
 
     pygame.display.flip()
 
-    delta = clock.tick_busy_loop(60)/1000  # limits FPS to 60
+    delta = clock.tick(60)/1000  # limits FPS to 60
     running_time += delta
     print(f'{running_time} s')
+    
 
 pygame.quit()
