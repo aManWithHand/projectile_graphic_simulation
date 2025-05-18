@@ -5,24 +5,28 @@ from ball import Ball
 
 
 pygame.init()
-screen = pygame.display.set_mode((1280, 720))
+width, height = 1280,720
+screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
 delta = 0
 running_time = 0
-gravity = -10
 is_running = True
+font = pygame.font.Font("fonts\Raleway-Black.ttf",24)
 
 #next show time as a text since start the game
 pygame.mouse.set_cursor(pygame.cursors.diamond)
 
 print(os.getcwd())
+
+
+
 ball_a = Ball(position = (100,100),
               speed = (0,0),
-              gravity = (0,5))
+              gravity = (0,10))
 
 ball_b = Ball(position = (300,100),
               speed = (5,-5),
-              gravity = (0,5))
+              gravity = (0,10))
 
 
 while is_running:
@@ -47,11 +51,17 @@ while is_running:
     ball_a.update(delta = running_time)
     ball_b.update(delta = running_time)
 
+    text_fps = font.render(f"FPS: {int(clock.get_fps())}",True,pygame.color.Color(255,255,255))
+    text_running_time = font.render(f"TIME: {running_time:.1f}",True,pygame.color.Color(255,255,255))
+    screen.blit(text_fps,(0, 0))
+    screen.blit(text_running_time,(0, 24))
+
     pygame.display.flip()
 
-    delta = clock.tick(60)/1000  # limits FPS to 60
+    delta = clock.tick(60)/1000
     running_time += delta
     print(f'{running_time} s')
+    print(pygame.font.get_fonts())
     
 
 pygame.quit()
