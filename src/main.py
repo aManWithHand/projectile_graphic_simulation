@@ -13,7 +13,7 @@ running_time = 0
 is_running = True
 font = pygame.font.Font("fonts\Raleway-Black.ttf",24)
 
-#next show time as a text since start the game
+
 pygame.mouse.set_cursor(pygame.cursors.diamond)
 
 print(os.getcwd())
