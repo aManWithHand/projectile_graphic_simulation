@@ -2,12 +2,32 @@ import pygame
 import os
 from ball import Ball
 
-#------------------------PATH--------------------------------------------
+#------------------------PATH--------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 IMAGE_DIR = os.path.join(BASE_DIR, "img")
 FONT_DIR = os.path.join(BASE_DIR, "fonts")
 
-#-----------------------GAME----------------------------------------------------
+
+#------------------------FUNCTION-----------------------------------------------
+def draw():
+    drawScreen()
+    drawEntity()
+    drawUI()
+    
+def drawEntity():
+    pass
+
+def drawUI():
+    pass
+
+def drawScreen():
+    pass
+
+def update():
+    pass
+
+
+#------------------------GAME----------------------------------------------------
 pygame.init()
 width, height = 1280,720
 screen = pygame.display.set_mode((width, height))
@@ -53,6 +73,7 @@ while is_running:
     text_fps = font.render(f"FPS: {int(clock.get_fps())}",
                            True,
                            pygame.color.Color(255,255,255))
+    
     text_running_time = font.render(f"TIME: {running_time:.1f}",
                                     True,
                                     pygame.color.Color(255,255,255))
