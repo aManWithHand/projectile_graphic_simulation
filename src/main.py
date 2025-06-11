@@ -15,16 +15,27 @@ def draw():
     drawUI()
     
 def drawEntity():
-    pass
+    screen.blit(ball_a.image, ball_a.rect)
+    screen.blit(ball_b.image, ball_b.rect)
 
 def drawUI():
-    pass
+    text_fps = font.render(f"FPS: {int(clock.get_fps())}",
+                           True,
+                           pygame.color.Color(255,255,255))
+    
+    text_running_time = font.render(f"TIME: {running_time:.1f}",
+                                    True,
+                                    pygame.color.Color(255,255,255))
+    screen.blit(text_fps,(0, 0))
+    screen.blit(text_running_time,(0, 24))
 
 def drawScreen():
-    pass
+    screen.fill("black")
+    
 
 def update():
-    pass
+    ball_a.update(delta = running_time)
+    ball_b.update(delta = running_time)
 
 
 #------------------------GAME----------------------------------------------------
@@ -63,23 +74,8 @@ while is_running:
             if event.key == pygame.K_SPACE:
                 running_time = 0
                 
-
-    screen.fill("black")
-    screen.blit(ball_a.image, ball_a.rect)
-    screen.blit(ball_b.image, ball_b.rect)
-    ball_a.update(delta = running_time)
-    ball_b.update(delta = running_time)
-
-    text_fps = font.render(f"FPS: {int(clock.get_fps())}",
-                           True,
-                           pygame.color.Color(255,255,255))
-    
-    text_running_time = font.render(f"TIME: {running_time:.1f}",
-                                    True,
-                                    pygame.color.Color(255,255,255))
-    screen.blit(text_fps,(0, 0))
-    screen.blit(text_running_time,(0, 24))
-
+    draw()
+    update()
     pygame.display.flip()
 
     delta = clock.tick(60)/1000
