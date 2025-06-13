@@ -13,7 +13,17 @@ def draw():
     drawScreen()
     drawEntity()
     drawUI()
-    
+
+def drawDebugUI(ball):
+    text_velocity_y = font.render(f"speed_Y: {ball.speed.y:.1f}",
+                                    True,
+                                    pygame.color.Color(255,255,255))
+    text_velocity_x = font.render(f"speed_X: {ball.speed.x:.1f}",
+                                    True,
+                                    pygame.color.Color(255,255,255))
+    screen.blit(text_velocity_y,(0, 50))
+    screen.blit(text_velocity_x,(0, 80))
+
 def drawEntity():
     screen.blit(ball_a.image, ball_a.rect)
     screen.blit(ball_b.image, ball_b.rect)
@@ -33,30 +43,32 @@ def drawScreen():
     screen.fill("black")
     
 
-def update():
-    ball_a.update(delta = running_time)
-    ball_b.update(delta = running_time)
+def update(delta):
+    ball_a.update(delta)
+    ball_b.update(delta)
 
 
 #------------------------GAME----------------------------------------------------
 pygame.init()
 width, height = 1280,720
+font_size = 24
+
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
 delta = 0
 running_time = 0
 is_running = True
-font = pygame.font.Font(os.path.join(FONT_DIR, "Raleway-Black.ttf"),24)
+font = pygame.font.Font(os.path.join(FONT_DIR, "Raleway-Black.ttf"),font_size)
 
 pygame.mouse.set_cursor(pygame.cursors.diamond)
 
-ball_a = Ball(position = (100,100),
-              speed = (0,0),
-              gravity = (0,10))
+ball_a = Ball(position = (300,300),
+              speed = (1,-3),
+              gravity = (0,3))
 
 ball_b = Ball(position = (300,100),
-              speed = (5,-5),
-              gravity = (0,10))
+              speed = (0,-1),
+              gravity = (0,3))
 
 
 while is_running:
@@ -75,7 +87,8 @@ while is_running:
                 running_time = 0
                 
     draw()
-    update()
+    drawDebugUI(ball_a)
+    update(delta)
     pygame.display.flip()
 
     delta = clock.tick(60)/1000
