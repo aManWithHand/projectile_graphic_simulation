@@ -33,5 +33,5 @@ class ThrowableObject(Sprite):
         # self.rect.center =  self.rect.center + self.speed * delta
         # self.rect.center = Vector2(self.start_position) + self.speed * time + self.gravity * time * time
         self.speed += self.gravity * delta
-        self.position += self.speed
+        self.position += self.speed * delta
         self.rect.center = self.position

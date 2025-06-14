@@ -64,11 +64,11 @@ pygame.mouse.set_cursor(pygame.cursors.diamond)
 
 ball_a = Ball(position = (300,300),
               speed = (1,-3),
-              gravity = (0,3))
+              gravity = (0,1))
 
-ball_b = Ball(position = (300,100),
-              speed = (0,-1),
-              gravity = (0,3))
+ball_b = Ball(position = (0,100),
+              speed = (100,0),
+              gravity = (0,0))
 
 
 while is_running:
