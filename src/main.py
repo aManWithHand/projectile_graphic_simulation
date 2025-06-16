@@ -1,5 +1,6 @@
 import pygame
 import os
+from setting import *
 from ball import Ball
 
 #------------------------PATH--------------------------------------------------
@@ -14,6 +15,7 @@ def draw():
     drawEntity()
     drawUI()
 
+
 def drawDebugUI(ball):
     text_velocity_y = font.render(f"speed_Y: {ball.speed.y:.1f}",
                                     True,
@@ -24,9 +26,11 @@ def drawDebugUI(ball):
     screen.blit(text_velocity_y,(0, 50))
     screen.blit(text_velocity_x,(0, 80))
 
+
 def drawEntity():
     screen.blit(ball_a.image, ball_a.rect)
     screen.blit(ball_b.image, ball_b.rect)
+
 
 def drawUI():
     text_fps = font.render(f"FPS: {int(clock.get_fps())}",
@@ -39,6 +43,7 @@ def drawUI():
     screen.blit(text_fps,(0, 0))
     screen.blit(text_running_time,(0, 24))
 
+
 def drawScreen():
     screen.fill("black")
     
@@ -50,9 +55,6 @@ def update(delta):
 
 #------------------------GAME----------------------------------------------------
 pygame.init()
-width, height = 1280,720
-font_size = 24
-
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
 delta = 0
